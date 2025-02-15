@@ -26,7 +26,7 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: dist-sdist
+        name: source
         path: dist/*.tar.gz
 
 
@@ -68,7 +68,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         path: wheelhouse/*.whl
-        name: dist-${{ matrix.os }}
+        name: ${{ matrix.wheel }}
 
   release:
     name: Create a new release
@@ -82,10 +82,13 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         path: dist
-        pattern: dist-*
         merge-multiple: true
 
-    - name: Create github release
+    - run: |
+        mkdir dist
+        find artifacts -type f -exec mv {} dist \;
+
+    - name: Create a GitHub release
       run: gh release create --generate-notes dist/*
       env:
         GITHUB_TOKEN: ${{ github.token }}
