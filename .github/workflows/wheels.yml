@@ -74,6 +74,11 @@ jobs:
     name: Create a new release
     needs: [build_sdist, build_wheels]
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/pydemumble/
+    permissions:
+      id-token: write
     # Upload to PyPI on every tag starting with 'v'
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
 
@@ -86,5 +91,3 @@ jobs:
 
     - name: Release to PyPI
       uses: pypa/gh-action-pypi-publish@v1.9.0
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
