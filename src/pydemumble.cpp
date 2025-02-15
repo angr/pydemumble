@@ -4,7 +4,7 @@
 #include <swift/Demangling/Demangle.h>
 #include <string>
 
-#define __VERSION__ "0.0.1"
+#define __PYDEMUMBLE_VERSION__ "0.0.1"
 
 namespace pydemumble
 {
@@ -34,7 +34,7 @@ namespace pydemumble
 
 	std::string version()
 	{
-		return std::string(__VERSION__);
+		return std::string(__PYDEMUMBLE_VERSION__);
 	}
 
 	NB_MODULE(pydemumble, m) {
