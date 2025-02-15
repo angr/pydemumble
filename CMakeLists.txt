@@ -23,11 +23,10 @@ if (WIN32)
 	endif()
 endif()
 
-find_package (Python COMPONENTS Interpreter Development REQUIRED)
-
-if (NOT Python_Development_FOUND)
-	message(FATAL_ERROR "Python3 include directory not found!")
-endif()
+# Try to import all Python components potentially needed by nanobind
+find_package(Python 3.8
+  REQUIRED COMPONENTS Interpreter Development.Module
+  OPTIONAL_COMPONENTS Development.SABIModule)
 
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
