@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15...3.27)
-project(pydemumble)
+project(pydemumble LANGUAGES CXX)
 
 if (CMAKE_VERSION VERSION_LESS 3.18)
   set(DEV_MODULE Development)
@@ -8,7 +8,7 @@ else()
 endif()
 
 if (UNIX)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-exceptions -fno-rtti")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 endif()
 
 if (WIN32)
@@ -50,6 +50,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/pydemumble/nanobind)
 
 nanobind_add_module(
 	pydemumble
+  STABLE_ABI
+  NB_STATIC
 	pydemumble/pydemumble.cpp
 	pydemumble/demumble/third_party/llvm/lib/Demangle/DLangDemangle.cpp
 	pydemumble/demumble/third_party/llvm/lib/Demangle/ItaniumDemangle.cpp
@@ -68,3 +70,5 @@ nanobind_add_module(
 	pydemumble/demumble/third_party/swift/lib/Demangling/Punycode.cpp
 	pydemumble/demumble/third_party/swift/lib/Demangling/Remangler.cpp
 )
+
+install(TARGETS pydemumble LIBRARY DESTINATION pydemumble)
