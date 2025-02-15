@@ -18,10 +18,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/angr/pydemumble"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-exclude = [".git", ".github"]
-
 [tool.scikit-build]
 # Protect the configuration against future changes in scikit-build-core
 minimum-version = "build-system.requires"
@@ -31,6 +27,10 @@ build-dir = "build/{wheel_tag}"
 
 # Build stable ABI wheels for CPython 3.12+
 wheel.py-api = "cp312"
+
+sdist.include = ["src"]
+
+sdist.exclude = [".vs", ".git", ".github", "__pycache__", "build", "dist", "tests"]
 
 [tool.cibuildwheel]
 # Necessary to see build output from the actual compilation
