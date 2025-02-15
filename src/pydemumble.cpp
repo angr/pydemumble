@@ -12,7 +12,7 @@ namespace pydemumble
 	{
 		size_t nUsed = func_name.length();
 		char* result = NULL;
-		if ((result = llvm::itaniumDemangle(func_name)) != NULL) {
+		if (func_name.length() > 1 && (result = llvm::itaniumDemangle(func_name)) != NULL) {
 			return std::string(result);
 		}
 		if ((result = llvm::rustDemangle(func_name)) != NULL) {
