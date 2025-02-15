@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: true
+        submodules: "recursive"
 
     - name: Build SDist
       run: pipx run build --sdist
@@ -41,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: true
+        submodules: "recursive"
 
     - uses: pypa/cibuildwheel@v2.22
 
