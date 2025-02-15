@@ -35,8 +35,8 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 include_directories(
-	pydemumble/demumble/third_party/llvm/include
-	pydemumble/demumble/third_party/swift/include
+	src/demumble/third_party/llvm/include
+	src/demumble/third_party/swift/include
 )
 
 add_definitions(
@@ -46,29 +46,29 @@ add_definitions(
 )
 
 # finding nanobind
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/pydemumble/nanobind)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/nanobind)
 
 nanobind_add_module(
 	pydemumble
   STABLE_ABI
   NB_STATIC
-	pydemumble/pydemumble.cpp
-	pydemumble/demumble/third_party/llvm/lib/Demangle/DLangDemangle.cpp
-	pydemumble/demumble/third_party/llvm/lib/Demangle/ItaniumDemangle.cpp
-	pydemumble/demumble/third_party/llvm/lib/Demangle/MicrosoftDemangle.cpp
-	pydemumble/demumble/third_party/llvm/lib/Demangle/MicrosoftDemangleNodes.cpp
-	pydemumble/demumble/third_party/llvm/lib/Demangle/RustDemangle.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/Context.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/CrashReporter.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/Demangler.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/Errors.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/ManglingUtils.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/NodeDumper.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/NodePrinter.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/OldDemangler.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/OldRemangler.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/Punycode.cpp
-	pydemumble/demumble/third_party/swift/lib/Demangling/Remangler.cpp
+	src/pydemumble.cpp
+	src/demumble/third_party/llvm/lib/Demangle/DLangDemangle.cpp
+	src/demumble/third_party/llvm/lib/Demangle/ItaniumDemangle.cpp
+	src/demumble/third_party/llvm/lib/Demangle/MicrosoftDemangle.cpp
+	src/demumble/third_party/llvm/lib/Demangle/MicrosoftDemangleNodes.cpp
+	src/demumble/third_party/llvm/lib/Demangle/RustDemangle.cpp
+	src/demumble/third_party/swift/lib/Demangling/Context.cpp
+	src/demumble/third_party/swift/lib/Demangling/CrashReporter.cpp
+	src/demumble/third_party/swift/lib/Demangling/Demangler.cpp
+	src/demumble/third_party/swift/lib/Demangling/Errors.cpp
+	src/demumble/third_party/swift/lib/Demangling/ManglingUtils.cpp
+	src/demumble/third_party/swift/lib/Demangling/NodeDumper.cpp
+	src/demumble/third_party/swift/lib/Demangling/NodePrinter.cpp
+	src/demumble/third_party/swift/lib/Demangling/OldDemangler.cpp
+	src/demumble/third_party/swift/lib/Demangling/OldRemangler.cpp
+	src/demumble/third_party/swift/lib/Demangling/Punycode.cpp
+	src/demumble/third_party/swift/lib/Demangling/Remangler.cpp
 )
 
 install(TARGETS pydemumble LIBRARY DESTINATION pydemumble)

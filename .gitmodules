@@ -1,6 +1,6 @@
 [submodule "demumble"]
-	path = pydemumble/demumble
+	path = src/demumble
 	url = https://github.com/nico/demumble
 [submodule "nanobind"]
-	path = pydemumble/nanobind
+	path = src/nanobind
 	url = https://github.com/wjakob/nanobind
